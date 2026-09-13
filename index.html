@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Royal Match — Wo Blaublut auf Blaublut trifft</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- ---------- Startbildschirm ---------- -->
+    <section class="screen screen--intro is-active" id="screen-intro">
+      <div class="crest crest--xl" aria-hidden="true">
+        <span class="crest__crown">👑</span>
+      </div>
+      <h1 class="logo">Royal<span>Match</span></h1>
+      <p class="tagline">Wo Blaublut auf Blaublut trifft.</p>
+      <p class="intro-copy">
+        Die exklusive Partnervermittlung für Hochwohlgeborene, verarmten Landadel
+        und Menschen mit mindestens einem Schloss.
+        <em>Ahnentafel-Prüfung inklusive.</em>
+      </p>
+      <button class="btn btn--gold" id="btn-start">
+        Anmelden als <strong>Mitch</strong>
+      </button>
+      <p class="fineprint">
+        Mit dem Fortfahren bestätigst du, dass mindestens 12 deiner 16 Urahnen
+        turnierfähig waren.
+      </p>
+    </section>
+
+    <!-- ---------- Deck ---------- -->
+    <section class="screen screen--deck" id="screen-deck">
+      <header class="topbar">
+        <div class="topbar__brand">
+          <span class="topbar__crown">👑</span>
+          <span class="topbar__name">Royal<span>Match</span></span>
+        </div>
+        <div class="topbar__me">
+          <span class="topbar__meta">Mitch <small>· Graf von Baywatch</small></span>
+          <img src="assets/mitch-tower.jpg" alt="Profilbild von Mitch" class="avatar" />
+        </div>
+      </header>
+
+      <div class="deck-wrap">
+        <div class="deck" id="deck" aria-live="polite"></div>
+        <p class="deck__empty" id="deck-empty" hidden>
+          Der Hof ist erschöpft. Es sind keine standesgemäßen Partien mehr verfügbar.
+        </p>
+      </div>
+
+      <div class="controls">
+        <button class="circle circle--nope" id="btn-nope" aria-label="Nicht standesgemäß">✕</button>
+        <button class="circle circle--info" id="btn-info" aria-label="Ahnentafel einsehen">⚜</button>
+        <button class="circle circle--like" id="btn-like" aria-label="Standesgemäß">♥</button>
+      </div>
+      <p class="hint">Wischen, klicken oder Pfeiltasten ← →</p>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- ---------- Match ---------- -->
+    <section class="screen screen--match" id="screen-match">
+      <div class="hearts" id="hearts" aria-hidden="true"></div>
+      <p class="match__kicker">Das Heroldsamt bestätigt</p>
+      <h2 class="match__title">Es ist ein<br /><span>Royal Match</span></h2>
+      <div class="match__faces">
+        <figure class="face">
+          <img src="assets/mitch-tower.jpg" alt="Mitch" />
+          <figcaption>Mitch</figcaption>
+        </figure>
+        <span class="match__heart">♥</span>
+        <figure class="face">
+          <img src="assets/cj-beach.jpg" alt="CJ" />
+          <figcaption>CJ</figcaption>
+        </figure>
+      </div>
+      <div class="chat" id="chat"></div>
+      <button class="btn btn--gold" id="btn-date" hidden>Mittwoch, 20 Uhr ✔</button>
+    </section>
+
+    <!-- ---------- Ende ---------- -->
+    <section class="screen screen--end" id="screen-end">
+      <div class="crest crest--xl" aria-hidden="true"><span class="crest__crown">💍</span></div>
+      <h2 class="end__title">Termin eingetragen</h2>
+      <p class="end__date">Mittwoch · 20:00 Uhr · am Wasser</p>
+      <p class="end__copy">
+        Der Hofstaat wurde informiert. Die Rettungsboje ist poliert.
+        Die Zeitlupe läuft ab Minute eins.
+      </p>
+      <button class="btn btn--ghost" id="btn-restart">Nochmal von vorn</button>
+      <p class="fineprint">Royal Match Ltd. · Hoflieferant seit 2026 · Alle Wappen ohne Gewähr</p>
+    </section>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

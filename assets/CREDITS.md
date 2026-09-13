@@ -1,0 +1,3 @@
+- `adel-07-diana.jpg` — Circle of Largillière - Portrait of a lady, as Diana the huntress.png · Public domain
+- `cj-beach.jpg` — Huntington Beach, CA Lifeguard Tower at Sunset.jpg · CC BY-SA 4.0
+- `mitch-tower.jpg` — Santa Monica Beach 23 – Lifeguard tower.jpg · CC BY-SA 4.0
