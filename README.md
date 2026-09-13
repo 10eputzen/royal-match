@@ -1,7 +1,10 @@
 # Royal Match 👑
 
-*Tinder für Adlige.* Eine Witz-App: durch acht hochwohlgeborene Profile wischen,
+*Tinder für Adlige.* Eine Witz-App: durch sieben gekrönte Häupter wischen,
 am Ende matcht **Mitch** mit **CJ** aus Baywatch.
+
+Die Profile zeigen historische Personen (Ludwig II., Sisi, Wilhelm II., Bismarck,
+Franz Joseph I., Victoria, Napoleon III.); die Texte sind Satire und frei erfunden.
 
 ## Starten
 
@@ -24,5 +27,5 @@ inklusive Chat und Terminvereinbarung für Mittwoch, 20 Uhr.
 
 ## Bilder
 
-Alle Porträts sind gemeinfreie Gemälde bzw. frei lizenzierte Fotos von Wikimedia Commons,
+Alle Porträts sind gemeinfreie historische Fotografien bzw. frei lizenzierte Fotos von Wikimedia Commons,
 Nachweise in [`assets/CREDITS.md`](assets/CREDITS.md).
