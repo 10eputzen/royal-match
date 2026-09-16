@@ -6,7 +6,7 @@ am Ende matchen **Mitch** und **CJ** aus Baywatch.
 Beim Anmelden wählt man **Mitch** oder **CJ**. Das Deck zeigt danach ausschließlich
 das jeweils andere Geschlecht, die letzte Karte ist immer das Gegenüber:
 
-- als **Mitch**: Sisi, Victoria → Match mit CJ
+- als **Mitch**: Sisi, Victoria, Auguste Viktoria, Alexandra → Match mit CJ
 - als **CJ**: Ludwig II., Wilhelm II., Bismarck, Franz Joseph I., Napoleon III. → Match mit Mitch
 
 Die Profile zeigen historische Personen; die Texte sind Satire und frei erfunden.

@@ -100,6 +100,34 @@ const PROFILES = [
     reject: 'Der Kaiser bedauert. Er wird ohnehin ständig mit jemand anderem verwechselt, da kommt es auf dich nicht mehr an.'
   },
   {
+    id: 'auguste',
+    gender: 'f',
+    name: 'Auguste Viktoria',
+    house: 'Deutsche Kaiserin · Königin von Preußen',
+    age: 52,
+    photo: 'assets/promi-auguste.jpg',
+    focus: 'center 30%',
+    bio: 'Sieben Kinder, dreißig gestiftete Kirchen, zu Hause kein einziger Widerspruch. Bin häuslich, pünktlich und gut zu Fuß. Das Reden übernimmt mein Mann, für uns beide.',
+    stats: [['7', 'Kinder'], ['30', 'Kirchen'], ['0', 'Widerworte']],
+    tags: ['Kirchenbau', 'Familienabende', 'Wohltätigkeit'],
+    ancestry: 'Ahnentafel geprüft: Schleswig-Holstein-Sonderburg-Augustenburg. Der Herold brauchte für den Namen zwei Zeilen und eine Pause.',
+    reject: 'Die Kaiserin lässt danken. Sie sei bereits vergeben — an einen Herrn, der ebenfalls in dieser Auswahl steht.'
+  },
+  {
+    id: 'alexandra',
+    gender: 'f',
+    name: 'Alexandra',
+    house: 'Königin des Vereinigten Königreichs',
+    age: 57,
+    photo: 'assets/promi-alexandra.jpg',
+    focus: 'center 24%',
+    bio: 'Habe 38 Jahre auf den Thron gewartet — an Geduld soll es also nicht scheitern. Komme grundsätzlich zu spät und grundsätzlich gut angezogen. Halb Europa kopiert meine Kragen.',
+    stats: [['38', 'Jahre gewartet'], ['20 min', 'Verspätung'], ['9', 'Perlenreihen']],
+    tags: ['Dänemark', 'Hohe Kragen', 'Später kommen'],
+    ancestry: 'Ahnentafel geprüft: Glücksburger, dänische Linie. Ihre Geschwister sitzen auf drei weiteren Thronen, das gilt hier als gute Partie.',
+    reject: 'Ihre Majestät sagt zu und kommt auch. Nur später. Das Heroldsamt notiert als Uhrzeit „unbestimmt".'
+  },
+  {
     id: 'cj',
     gender: 'f',
     name: 'CJ',

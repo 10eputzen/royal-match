@@ -11,6 +11,8 @@ Alle Bilder stammen von Wikimedia Commons.
 - `promi-franzjo.jpg` — Franz Joseph I. von Österreich, 1910 · Public domain
 - `promi-victoria.jpg` — Queen Victoria by Bassano · Public domain
 - `promi-napoleon.jpg` — Napoleon III., Porträt 1869 (LCCN00650569) · Public domain
+- `promi-auguste.jpg` — Kaiserin Auguste Viktoria, Atelier Th. H. Voigt (Bundesarchiv Bild 102-01286) · Public domain
+- `promi-alexandra.jpg` — Dowager Queen Alexandra (restaurierte Fassung, Bain News Service) · Public domain
 
 ## Strandfotos
 
