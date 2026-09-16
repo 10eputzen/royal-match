@@ -3,6 +3,7 @@
 const PROFILES = [
   {
     id: 'ludwig',
+    gender: 'm',
     name: 'Ludwig II.',
     house: 'König von Bayern',
     age: 40,
@@ -16,6 +17,7 @@ const PROFILES = [
   },
   {
     id: 'sisi',
+    gender: 'f',
     name: 'Elisabeth „Sisi"',
     house: 'Kaiserin von Österreich',
     age: 30,
@@ -29,6 +31,7 @@ const PROFILES = [
   },
   {
     id: 'wilhelm',
+    gender: 'm',
     name: 'Wilhelm II.',
     house: 'Deutscher Kaiser',
     age: 44,
@@ -42,6 +45,7 @@ const PROFILES = [
   },
   {
     id: 'bismarck',
+    gender: 'm',
     name: 'Otto von Bismarck',
     house: 'Fürst · Reichskanzler a. D.',
     age: 70,
@@ -55,6 +59,7 @@ const PROFILES = [
   },
   {
     id: 'franzjoseph',
+    gender: 'm',
     name: 'Franz Joseph I.',
     house: 'Kaiser von Österreich',
     age: 62,
@@ -68,6 +73,7 @@ const PROFILES = [
   },
   {
     id: 'victoria',
+    gender: 'f',
     name: 'Victoria',
     house: 'Königin des Vereinigten Königreichs',
     age: 63,
@@ -81,6 +87,7 @@ const PROFILES = [
   },
   {
     id: 'napoleon',
+    gender: 'm',
     name: 'Napoleon III.',
     house: 'Kaiser der Franzosen',
     age: 61,
@@ -94,6 +101,7 @@ const PROFILES = [
   },
   {
     id: 'cj',
+    gender: 'f',
     name: 'CJ',
     house: 'Lady of the Waves · Baywatch Bay',
     age: 27,
@@ -105,16 +113,55 @@ const PROFILES = [
     tags: ['Rettungsschwimmen', 'Sonnenuntergänge', 'Rot'],
     ancestry: 'Ahnentafel geprüft: keine gefunden. Das Heroldsamt erklärt sie ersatzweise für „adelig durch Verdienst".',
     isTarget: true
+  },
+  {
+    id: 'mitch',
+    gender: 'm',
+    name: 'Mitch',
+    house: 'Graf von Baywatch',
+    age: 41,
+    photo: 'assets/mitch-tower.jpg',
+    focus: 'center 45%',
+    verified: true,
+    bio: 'Den Grafentitel trage ich seit einem Sommer, in dem niemand nachgefragt hat. Bin da, wenn es brenzlig wird, und danach auch noch. Foto zeigt meinen Arbeitsplatz.',
+    stats: [['312', 'Rettungen'], ['1', 'Turm'], ['0', 'Nachfragen']],
+    tags: ['Rettungsschwimmen', 'Rotes Board', 'Zur Stelle sein'],
+    ancestry: 'Ahnentafel geprüft: keine gefunden. Das Heroldsamt erklärt ihn ersatzweise für „adelig durch Verdienst".',
+    isTarget: true
   }
 ];
 
-const CHAT = [
-  { who: 'them', text: 'Warte mal … Mitch?? 😳' },
-  { who: 'me',   text: 'Der Eine und Einzige.' },
-  { who: 'them', text: 'Ich dachte, du bist bei der Küstenwache. Seit wann bist du adelig?' },
-  { who: 'me',   text: 'Graf von Baywatch. Steht so im Ausweis. Hat nie jemand nachgeprüft.' },
-  { who: 'them', text: 'Mittwoch, 20 Uhr? Ich bring die Zeitlupe mit. 🌅' }
-];
+/* Wer sich anmeldet, bestimmt das Deck: gezeigt wird ausschließlich das andere Geschlecht. */
+const PLAYERS = {
+  mitch: {
+    id: 'mitch',
+    gender: 'm',
+    name: 'Mitch',
+    house: 'Graf von Baywatch',
+    photo: 'assets/mitch-tower.jpg',
+    chat: [
+      { who: 'them', text: 'Warte mal … Mitch?? 😳' },
+      { who: 'me',   text: 'Der Eine und Einzige.' },
+      { who: 'them', text: 'Ich dachte, du bist bei der Küstenwache. Seit wann bist du adelig?' },
+      { who: 'me',   text: 'Graf von Baywatch. Steht so im Ausweis. Hat nie jemand nachgeprüft.' },
+      { who: 'them', text: 'Mittwoch, 20 Uhr? Ich bring die Zeitlupe mit. 🌅' }
+    ]
+  },
+  cj: {
+    id: 'cj',
+    gender: 'f',
+    name: 'CJ',
+    house: 'Lady of the Waves',
+    photo: 'assets/cj-beach.jpg',
+    chat: [
+      { who: 'them', text: 'Moment mal … CJ?? 😳' },
+      { who: 'me',   text: 'Die Eine und Einzige.' },
+      { who: 'them', text: 'Ich dachte, du fischst Leute aus dem Pazifik. Seit wann bist du adelig?' },
+      { who: 'me',   text: 'Lady of the Waves. Hab ich mir selbst verliehen. Hat nie jemand nachgeprüft.' },
+      { who: 'them', text: 'Mittwoch, 20 Uhr? Ich bring das rote Board mit. 🌅' }
+    ]
+  }
+};
 
 const $ = (sel) => document.querySelector(sel);
 const deckEl = $('#deck');
@@ -122,6 +169,7 @@ const toastEl = $('#toast');
 const SWIPE_THRESHOLD = 110;
 
 let queue = [];
+let player = null;
 let busy = false;
 let toastTimer = null;
 
@@ -264,7 +312,7 @@ function decide(direction, profile) {
     busy = false;
 
     if (profile.isTarget && direction === 'like') {
-      startMatch();
+      startMatch(profile);
     } else if (direction === 'like') {
       showToast(profile.reject);
     } else {
@@ -282,15 +330,16 @@ function showToast(html) {
 }
 
 /* ---------- Match ---------- */
-function startMatch() {
+function startMatch(target) {
   showScreen('screen-match');
+  setFaces(target);
   rainHearts();
   const chatEl = $('#chat');
   chatEl.innerHTML = '';
   $('#btn-date').hidden = true;
 
   let delay = 700;
-  CHAT.forEach((line, i) => {
+  player.chat.forEach((line, i) => {
     setTimeout(() => {
       const typing = document.createElement('div');
       typing.className = 'bubble bubble--them bubble--typing';
@@ -334,15 +383,37 @@ function currentProfile() {
   return card ? PROFILES.find((p) => p.id === card.dataset.id) : null;
 }
 
+function applyPlayer(key) {
+  player = PLAYERS[key];
+  $('#me-name').textContent = player.name;
+  $('#me-house').textContent = '· ' + player.house;
+  const avatar = $('#me-avatar');
+  avatar.src = player.photo;
+  avatar.alt = 'Profilbild von ' + player.name;
+}
+
+function setFaces(target) {
+  $('#face-me-img').src = player.photo;
+  $('#face-me-img').alt = player.name;
+  $('#face-me-cap').textContent = player.name;
+  $('#face-them-img').src = target.photo;
+  $('#face-them-img').alt = target.name;
+  $('#face-them-cap').textContent = target.name;
+}
+
 function reset() {
-  queue = [...PROFILES];
+  // Gezeigt wird nur, wer nicht das eigene Geschlecht hat — das eigene Profil fällt damit automatisch raus.
+  queue = PROFILES.filter((p) => p.gender !== player.gender);
   renderDeck();
   toastEl.classList.remove('is-visible');
 }
 
-$('#btn-start').addEventListener('click', () => {
-  reset();
-  showScreen('screen-deck');
+document.querySelectorAll('[data-login]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    applyPlayer(btn.dataset.login);
+    reset();
+    showScreen('screen-deck');
+  });
 });
 
 $('#btn-nope').addEventListener('click', () => {
@@ -362,10 +433,7 @@ $('#btn-info').addEventListener('click', () => {
 
 $('#btn-date').addEventListener('click', () => showScreen('screen-end'));
 
-$('#btn-restart').addEventListener('click', () => {
-  reset();
-  showScreen('screen-deck');
-});
+$('#btn-restart').addEventListener('click', () => showScreen('screen-intro'));
 
 document.addEventListener('keydown', (e) => {
   if (!$('#screen-deck').classList.contains('is-active')) return;

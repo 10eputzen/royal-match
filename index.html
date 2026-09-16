@@ -25,10 +25,21 @@
         und Menschen mit mindestens einem Schloss.
         <em>Ahnentafel-Prüfung inklusive.</em>
       </p>
-      <button class="btn btn--gold" id="btn-start">
-        Anmelden als <strong>Mitch</strong>
-      </button>
+      <p class="login-label">Anmelden als</p>
+      <div class="login">
+        <button class="login__choice" data-login="mitch">
+          <img src="assets/mitch-tower.jpg" alt="" />
+          <span class="login__name">Mitch</span>
+          <span class="login__house">Graf von Baywatch</span>
+        </button>
+        <button class="login__choice" data-login="cj">
+          <img src="assets/cj-beach.jpg" alt="" />
+          <span class="login__name">CJ</span>
+          <span class="login__house">Lady of the Waves</span>
+        </button>
+      </div>
       <p class="fineprint">
+        Das Heroldsamt legt ausschließlich Partien des jeweils anderen Geschlechts vor.
         Mit dem Fortfahren bestätigst du, dass mindestens 12 deiner 16 Urahnen
         turnierfähig waren.
       </p>
@@ -42,8 +53,8 @@
           <span class="topbar__name">Royal<span>Match</span></span>
         </div>
         <div class="topbar__me">
-          <span class="topbar__meta">Mitch <small>· Graf von Baywatch</small></span>
-          <img src="assets/mitch-tower.jpg" alt="Profilbild von Mitch" class="avatar" />
+          <span class="topbar__meta"><span id="me-name">Mitch</span> <small id="me-house">· Graf von Baywatch</small></span>
+          <img src="assets/mitch-tower.jpg" alt="Profilbild von Mitch" class="avatar" id="me-avatar" />
         </div>
       </header>
 
@@ -71,13 +82,13 @@
       <h2 class="match__title">Es ist ein<br /><span>Royal Match</span></h2>
       <div class="match__faces">
         <figure class="face">
-          <img src="assets/mitch-tower.jpg" alt="Mitch" />
-          <figcaption>Mitch</figcaption>
+          <img src="assets/mitch-tower.jpg" alt="Mitch" id="face-me-img" />
+          <figcaption id="face-me-cap">Mitch</figcaption>
         </figure>
         <span class="match__heart">♥</span>
         <figure class="face">
-          <img src="assets/cj-beach.jpg" alt="CJ" />
-          <figcaption>CJ</figcaption>
+          <img src="assets/cj-beach.jpg" alt="CJ" id="face-them-img" />
+          <figcaption id="face-them-cap">CJ</figcaption>
         </figure>
       </div>
       <div class="chat" id="chat"></div>
@@ -93,7 +104,7 @@
         Der Hofstaat wurde informiert. Die Rettungsboje ist poliert.
         Die Zeitlupe läuft ab Minute eins.
       </p>
-      <button class="btn btn--ghost" id="btn-restart">Nochmal von vorn</button>
+      <button class="btn btn--ghost" id="btn-restart">Neu anmelden</button>
       <p class="fineprint">Royal Match Ltd. · Hoflieferant seit 2026 · Alle Profile zeigen historische Personen,
         sämtliche Aussagen sind frei erfunden.</p>
     </section>
